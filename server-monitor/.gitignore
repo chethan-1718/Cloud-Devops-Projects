@@ -1,0 +1,19 @@
+
+# Generated backup archives
+backups/
+
+# Runtime logs
+logs/*.log
+
+# Temporary retention tests
+retention-test/
+
+# Python cache (if added later)
+__pycache__/
+*.pyc
+
+# Temporary restore tests
+restore-test/
+
+# Test input data
+backup_source/
