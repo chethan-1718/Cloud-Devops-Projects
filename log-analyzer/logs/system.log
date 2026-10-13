@@ -1,0 +1,10 @@
+Oct 13 09:00:12 ubuntu sshd[1024]: Accepted password for chethan from 192.168.1.10 port 51234 ssh2
+Oct 13 09:01:15 ubuntu sshd[1025]: Failed password for invalid user admin from 192.168.1.50 port 51235 ssh2
+Oct 13 09:02:20 ubuntu systemd[1]: Started Daily Cleanup Service.
+Oct 13 09:03:45 ubuntu nginx[1100]: ERROR: Failed to connect to upstream server
+Oct 13 09:04:10 ubuntu kernel: WARNING: High memory usage detected
+Oct 13 09:05:30 ubuntu sshd[1026]: Failed password for root from 192.168.1.50 port 51236 ssh2
+Oct 13 09:06:00 ubuntu nginx[1101]: INFO: Request processed successfully
+Oct 13 09:07:12 ubuntu sshd[1027]: Failed password for invalid user test from 192.168.1.50 port 51237 ssh2
+Oct 13 09:08:25 ubuntu kernel: ERROR: Disk I/O failure detected
+Oct 13 09:09:40 ubuntu sshd[1028]: Accepted publickey for chethan from 192.168.1.10 port 51238 ssh2
