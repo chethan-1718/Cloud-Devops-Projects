@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps E-Commerce Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f4f6f8;
+        }
+
+        h1 {
+            color: #243b53;
+        }
+
+        .product {
+            background: white;
+            padding: 16px;
+            margin: 12px 0;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>DevOps E-Commerce Store</h1>
+    <p>Products available in our store:</p>
+
+    <div id="products">Loading products...</div>
+
+    <script>
+        fetch("/api/products")
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById("products");
+
+                container.innerHTML = data.products.map(product => `
+                    <div class="product">
+                        <h3>${product.name}</h3>
+                        <p>Price: ₹${product.price.toLocaleString("en-IN")}</p>
+                    </div>
+                `).join("");
+            })
+            .catch(() => {
+                document.getElementById("products").textContent =
+                    "Unable to load products. Please try again later.";
+            });
+    </script>
+</body>
+</html>
