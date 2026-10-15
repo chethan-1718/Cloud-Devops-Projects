@@ -40,8 +40,9 @@ pipeline{
           steps{
             dir('docker-jenkins-app'){
                 sh '''
-                    docker build -t docker-jenkins-app-api:latest ./api
-                    docker build -t docker-jenkins-app-worker:latest ./worker
+                    GIT_COMMIT_SHORT=$(git rev-parse --short HEAD)
+                    docker build -t docker-jenkins-app-api:${GIT_COMMIT_SHORT} ./api
+                    docker build -t docker-jenkins-app-worker:${GIT_COMMIT_SHORT} ./worker
                 '''
             }
           }
