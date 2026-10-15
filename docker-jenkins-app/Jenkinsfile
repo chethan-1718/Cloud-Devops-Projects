@@ -40,7 +40,8 @@ pipeline{
           steps{
             dir('docker-jenkins-app'){
                 sh '''
-                    docker compose build api worker
+                    docker build -t docker-jenkins-app-api:latest ./api
+                    docker build -t docker-jenkins-app-worker:latest ./worker
                 '''
             }
           }
