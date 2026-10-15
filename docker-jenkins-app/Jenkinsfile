@@ -1,0 +1,18 @@
+pipeline{
+    agent{
+        label 'docker-agent'
+    }
+
+    stages{
+        stage('Verify Agent'){
+            steps{
+                sh '''
+                    echo "Hello from Jenkins CI/CD!"
+                    echo "Running on agent: $(hostname)"
+                    echo "User: $(whoami)"
+                    docker --version
+                '''
+            }
+        }
+    }
+}

@@ -62,6 +62,34 @@ services:
       redis:
         condition: service_started
 
+  jenkins:
+    build: ./jenkins
+    container_name: jenkins
+    restart: unless-stopped
+    ports:
+      - "8081:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+
+  jenkins-agent:
+    build: ./jenkins-agent
+    container_name: jenkins-agent
+    restart: unless-stopped
+    init: true
+    depends_on:
+      - jenkins
+    environment:
+      JENKINS_URL: http://jenkins:8080
+      JENKINS_AGENT_NAME: docker-agent
+      JENKINS_SECRET: ${JENKINS_AGENT_SECRET:?Set JENKINS_AGENT_SECRET in your .env file}
+      JENKINS_AGENT_WORKDIR: /home/jenkins/agent
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - jenkins_agent_work:/home/jenkins/agent  
+
 
 volumes:
   postgres_data:
+  jenkins_home:
+  jenkins_agent_work:
