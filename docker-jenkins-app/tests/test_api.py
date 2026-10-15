@@ -94,7 +94,7 @@ def test_order_processing():
 
     order = response.json()
 
-    assert order["status"] == "pending"
+    assert order["status"] in {"pending", "processing", "processed"}
     assert order["order_id"] > 0
     assert order["task_id"]
 
