@@ -14,5 +14,27 @@ pipeline{
                 '''
             }
         }
+
+        stage('Install Test Dependencies'){
+            steps{
+                dir('docker-jenkins-app'){
+                    sh '''
+                        python3 -m venv .venv
+                        .venv/bin/pip install -r tests/requirements.txt
+                    '''
+                }
+                
+            }
+        }
+
+        stage('Run API Tests'){
+            steps{
+                dir('docker-jenkins-app'){
+                    sh '''
+                    BASE_URL=http://api:8000 .venv/bin/pytest -v tests 
+                    '''
+                }
+            }
+        }
     }
 }

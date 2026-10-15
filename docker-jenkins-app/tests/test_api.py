@@ -1,10 +1,10 @@
 
 import time
-
+import os 
 import requests
 
 
-BASE_URL = "http://localhost:8080/api"
+BASE_URL = os.getenv("BASE_URL", "http://localhost:8080/api")
 
 
 def test_api_health():
