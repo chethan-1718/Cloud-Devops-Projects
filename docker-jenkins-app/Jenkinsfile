@@ -36,5 +36,15 @@ pipeline{
                 }
             }
         }
-    }
+        stage('Build Application Images'){
+          steps{
+            dir('docker-jenkins-app'){
+                sh '''
+                    docker compose build api worker
+                '''
+            }
+          }
+        }
+
+    }   
 }
